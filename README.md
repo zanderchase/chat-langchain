@@ -1,4 +1,4 @@
-# 🦜️🔗 ChatLangChain
+# 🦜️🔗 ChatLangChain meets Dagchain
 
 This repo is an implementation of a locally hosted chatbot specifically focused on question answering over the [LangChain documentation](https://langchain.readthedocs.io/en/latest/).
 Built with [LangChain](https://github.com/hwchase17/langchain/) and [FastAPI](https://fastapi.tiangolo.com/).
@@ -8,6 +8,7 @@ The app leverages LangChain's streaming support and async API to update the page
 ## ✅ Running locally
 1. Install dependencies: `pip install -r requirements.txt`
 1. Run `ingest.sh` to ingest LangChain docs data into the vectorstore (only needs to be done once).
+   1. This has been upgraded to have Dagster support. It will now launch a Dagster job that you can materialize your assets from and view progress at each step. It can also be scheduled for continuous updates.
    1. You can use other [Document Loaders](https://langchain.readthedocs.io/en/latest/modules/document_loaders.html) to load your own data into the vectorstore.
 1. Run the app: `make start`
    1. To enable tracing, make sure `langchain-server` is running locally and pass `tracing=True` to `get_chain` in `main.py`. You can find more documentation [here](https://langchain.readthedocs.io/en/latest/tracing.html).
